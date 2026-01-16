@@ -51,7 +51,7 @@
 </html>
 
 <footer>
-    s3th.net | version 1.<span id="commits"></span> 
+   s3th.net | version 1.<span id="commits"></span> 
 </footer>
 
 <script>
@@ -68,9 +68,14 @@
   const match = link.match(/page=(\d+)>; rel="last"/);
   return match ? Number(match[1]) : 1;
 }
+
+(async () => {
+  const count = await getCommitCount("sethjax", "coolwebsite");
+  console.log("Commit count:", count);
+})();
   
   var today = new Date();
 
+  document.getElementById("commits").textContent = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
   document.getElementById("date").textContent = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
-  document.getElementById("commits").textContent = getCommitCount("sethjax", "coolwebsite");
 </script>
