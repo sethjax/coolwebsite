@@ -68,11 +68,9 @@
     window.location.href = "https://x.com/GigglingBaby67";
   };
 
-  var dateOfBirth = new Date("2011-29-01");
-  var currentDate = new Date();
-  console.log(currentDate);
-  console.log(dateOfBirth);
-  var age = currentDate.getFullYear() - dateOfBirth.getFullYear();
-  var monthDifference = currentDate.getMonth() - dateOfBirth.getMonth();
-  document.getElementById("age").textContent = age;
+  var currentUnix = Math.floor(Date.now() / 1000);
+  var birthUnix = 1296288000;
+  var ageSeconds = currentUnix - birthUnix;
+  var ageYears = Math.floor(ageSeconds / 31557600); // Average year length
+  document.getElementById("age").innerText = ageYears;
 </script>
