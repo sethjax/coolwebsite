@@ -16,7 +16,7 @@
     margin-top: 0%;
   }
 
-  button {
+  linkbutton {
     font-family: "MyFont", sans-serif;
     color: black;
     font-weight: bold;
@@ -51,44 +51,9 @@
 </html>
 
 <footer>
-   s3th.net | version 1.<span id="commits"></span> 
+   s3th.net 
 </footer>
 
 <script>
-  async function getCommitCount(owner, repo, branch = "main") {
-  const cacheKey = `commits_${owner}_${repo}`;
-  const cached = localStorage.getItem(cacheKey);
-  const cacheTime = localStorage.getItem(cacheKey + "_time");
-  const now = Date.now();
-  const cacheExpiry = 24 * 60 * 60 * 1000; // 24 hours
   
-  if (cached && cacheTime && (now - parseInt(cacheTime)) < cacheExpiry) {
-    return Number(cached);
-  }
-
-  const res = await fetch(
-    `https://api.github.com/repos/${owner}/${repo}/commits?sha=${branch}&per_page=1`,
-    { method: "GET" }
-  );
-
-  // GitHub puts pagination info in the "Link" header
-  const link = res.headers.get("Link");
-  const count = link ? (link.match(/page=(\d+)>; rel="last"/) ? Number(link.match(/page=(\d+)>; rel="last"/)[1]) : 1) : 1;
-  
-  localStorage.setItem(cacheKey, count.toString());
-  localStorage.setItem(cacheKey + "_time", now.toString());
-  
-  return count;
-}
-
-(async () => {
-  const count = await getCommitCount("sethjax", "coolwebsite");
-  console.log("Commit count:", count);
-  document.getElementById("commits").textContent = count.toString();
-})();
-  
-  var today = new Date();
-
-  
-  document.getElementById("date").textContent = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
 </script>
