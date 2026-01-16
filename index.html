@@ -72,10 +72,11 @@
 (async () => {
   const count = await getCommitCount("sethjax", "coolwebsite");
   console.log("Commit count:", count);
+  document.getElementById("commits").textContent = count.toString();
 })();
   
   var today = new Date();
 
-  document.getElementById("commits").textContent = count;
+  
   document.getElementById("date").textContent = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
 </script>
