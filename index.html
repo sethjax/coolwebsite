@@ -69,11 +69,10 @@
   };
 
   var dateOfBirth = new Date("2011-29-01");
-  var today = new Date();
-  var age = today.getFullYear() - dateOfBirth.getFullYear();
-  var monthDifference = today.getMonth() - dateOfBirth.getMonth();
-  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dateOfBirth.getDate())) {
-      age--;
-  }
+  var currentDate = new Date();
+  console.log(currentDate);
+  console.log(dateOfBirth);
+  var age = currentDate.getFullYear() - dateOfBirth.getFullYear();
+  var monthDifference = currentDate.getMonth() - dateOfBirth.getMonth();
   document.getElementById("age").textContent = age;
 </script>
