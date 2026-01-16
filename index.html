@@ -55,7 +55,27 @@
 </footer>
 
 <script>
+  async function getCommitCount(owner, repo, branch = "main") {
+  const res = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/commits?sha=${branch}&per_page=1`,
+    { method: "GET" }
+  );
+
+  // GitHub puts pagination info in the "Link" header
+  const link = res.headers.get("Link");
+  if (!link) return 1; // only 1 commit exists
+
+  const match = link.match(/page=(\d+)>; rel="last"/);
+  return match ? Number(match[1]) : 1;
+}
+
+(async () => {
+  const count = await getCommitCount("sethjax", "coolwebsite");
+  console.log("Commit count:", count);
+})();
+  
   var today = new Date();
 
   document.getElementById("date").textContent = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+  document.getElementById("commits").textContent = count;
 </script>
