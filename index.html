@@ -49,6 +49,7 @@
     <h1>about me</h1>
     <p>my name is seth</p>
     <p>i am <span id="age"></span> years old</p>
+    <p>my birthday is in <span id="timeuntilbirthday"></span> days 🎂</p>
     <linkbutton>discord</linkbutton> <linkbutton>twitter</linkbutton>
 </body>
 </html>
@@ -73,4 +74,14 @@
   var ageSeconds = currentUnix - birthUnix;
   var ageYears = Math.floor(ageSeconds / 31557600); // Average year length
   document.getElementById("age").innerText = ageYears;
+
+  var nextBirthdayYear = new Date().getFullYear();
+  var birthdayThisYear = new Date(nextBirthdayYear, 0, 31); // January 31
+  if (new Date() > birthdayThisYear) {
+    nextBirthdayYear += 1;
+  }
+  var nextBirthday = new Date(nextBirthdayYear, 0, 31);
+  var timeUntilBirthday = nextBirthday - new Date();
+  var daysUntilBirthday = Math.ceil(timeUntilBirthday / (1000 * 60 * 60 * 24));
+  document.getElementById("timeuntilbirthday").innerText = daysUntilBirthday;
 </script>
