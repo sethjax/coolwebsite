@@ -54,9 +54,11 @@
 </html>
 
 <footer>
-    <span id="year"></span> s3th.net | version 1.0
+    <span id="date"></span> s3th.net | version 1.0
 </footer>
 
 <script>
-  document.getElementById("year").textContent = new Date().getDate().toString();
+  var today = new Date();
+
+  document.getElementById("date").textContent = today.getMonth() / today.getDate() / today.getFullYear();
 </script>
