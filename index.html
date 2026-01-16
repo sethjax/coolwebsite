@@ -23,8 +23,7 @@
     font-weight: bold;
     background-color: rgb(255, 139, 216);
     border-radius: 5px;
-    border:0px;
-    font-size: 16px;
+    font-size: 12px;
     padding: 4px, 4px;
     cursor: pointer;
   }
@@ -49,7 +48,7 @@
 <body>
     <h1>seth's website</h1>
     <p>this is my website tm</p>
-    <linkbutton>discord</linkbutton> | <linkbutton>youtube</linkbutton> | <linkbutton>twitter</linkbutton>
+    <linkbutton>discord</linkbutton> <linkbutton>twitter</linkbutton>
 </body>
 </html>
 
@@ -58,5 +57,13 @@
 </footer>
 
 <script>
+  const buttons = document.querySelectorAll("linkbutton");
 
+  buttons[0].onclick = () => {
+    window.location.href = "https://discord.com/users/688416792103878710";
+  };
+
+  buttons[1].onclick = () => {
+    window.location.href = "https://x.com/GigglingBaby67";
+  };
 </script>
